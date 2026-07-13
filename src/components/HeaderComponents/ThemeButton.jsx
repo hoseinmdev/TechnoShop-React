@@ -3,12 +3,12 @@ import { useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const ThemeButton = () => {
-  const savedTheme = JSON.parse(localStorage.getItem("theme") || `[]`);
-  const [theme, setTheme] = useState(savedTheme.length !==0 ? savedTheme : "light");
+  const savedTheme = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(savedTheme || "light");
 
   useEffect(() => {
-    if (savedTheme.length === 0) {
-      localStorage.setItem("theme", JSON.stringify("light"));
+    if (!savedTheme) {
+      localStorage.setItem("theme", "light");
       setTheme("light");
     }
     theme === "light"
@@ -17,14 +17,14 @@ const ThemeButton = () => {
   }, []);
 
   const darkModeHandler = () => {
-    const theme = JSON.parse(localStorage.getItem("theme") || `{}`);
-    if (theme === "light") {
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "light") {
       setTheme("dark");
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", JSON.stringify("dark"));
+      localStorage.setItem("theme", "dark");
     } else {
       setTheme("light");
-      localStorage.setItem("theme", JSON.stringify("light"));
+      localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
     }
   };
