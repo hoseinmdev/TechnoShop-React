@@ -11,7 +11,10 @@ import { Link } from "react-router-dom";
 
 const CircleCategories = () => {
   const [categoriesState, setCategoriesState] = useState(0);
-  setTimeout(() => setCategoriesState(1), 1500);
+  useEffect(() => {
+    const timer = setTimeout(() => setCategoriesState(1), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const categories = [
     {
