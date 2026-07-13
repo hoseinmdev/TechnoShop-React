@@ -4,14 +4,11 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import backToUp from "utils/BackToUp";
 import signUpImage from "../assets/images/signUpImage.webp";
-import axiosBase from "axiosConfig";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const LoginPage = () => {
-  const [isLoading, setIsLoading] = useState(0);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -29,31 +26,16 @@ const LoginPage = () => {
       .required("رمز عبور اجباری است"),
   });
   const onSubmit = (values, helpers) => {
-    setIsLoading(1);
-    axiosBase
-      .post("Account/Login/", {
+    localStorage.setItem(
+      "token",
+      JSON.stringify({
+        token: `local-${Date.now()}`,
         email: values.email,
-        Password: values.password,
-      })
-      .then((response) => {
-        setIsLoading(0);
-        toast.success("خوش آمدید", { theme: "colored" });
-        localStorage.setItem(
-          "token",
-          JSON.stringify({
-            token: response.data.Authorization,
-            email: values.email,
-          }),
-        );
-        axiosBase.defaults.headers["Authorization"] =
-          response.data.Authorization;
-        helpers.resetForm();
-        navigate("/", { replace: true });
-      })
-      .catch((error) => {
-        setIsLoading(0);
-        toast.error(`${error.response.data.Error}`, { theme: "colored" });
-      });
+      }),
+    );
+    toast.success("خوش آمدید", { theme: "colored" });
+    helpers.resetForm();
+    navigate("/", { replace: true });
   };
   const formik = useFormik({
     initialValues,
@@ -100,11 +82,7 @@ const LoginPage = () => {
             type="submit"
             className="mt-8 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none dark:shadow-none dark:outline dark:outline-violet-400"
           >
-            {!isLoading ? (
-              "ورود"
-            ) : (
-              <AiOutlineLoading3Quarters className="w-full animate-spin text-center text-xl text-white" />
-            )}
+            ورود
           </button>
           <Link
             to="/forgotPassword"

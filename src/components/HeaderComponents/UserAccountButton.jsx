@@ -1,23 +1,14 @@
-import axiosBase from "axiosConfig";
 import { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { ImExit } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 const UserAccountButton = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(0);
   const exitOfAccount = () => {
-    axiosBase
-      .post("Account/Log_out/")
-      .then((res) => {
-        localStorage.removeItem("token");
-        window.location.reload();
-      })
-      .catch((err) => {
-        toast.warn(`${err.response.data.Error}`, { theme: "colored" });
-      });
+    localStorage.removeItem("token");
+    window.location.reload();
   };
   const renderModal = () => {
     setShowModal(!showModal);
