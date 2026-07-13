@@ -1,6 +1,6 @@
-# digiHosein-React
+# Techno Shop (repo folder: TechnoShop-React)
 
-Persian-language (RTL) e-commerce storefront ("digiHosein" / دیجی حسین). Create-react-app project, not ejected.
+Persian-language (RTL) e-commerce storefront branded "Techno Shop" / «تکنو شاپ» (formerly "TechnoShop"). Create-react-app project, not ejected. The backend URL in [src/axiosConfig.js](src/axiosConfig.js) still uses the old TechnoShop domain — it's a real external host, don't rename it.
 
 ## Stack
 - React 18 + `react-scripts` 5 (CRA, not Vite)

@@ -6,7 +6,7 @@ const NotFoundPage = () => {
       <img src={page404} className="w-96" />
       <Link to="/">
         <button className="rounded-full bg-violet-700 px-8 py-2 text-xl text-white">
-          بازگشت به فروشگاه دیجی حسین
+          بازگشت به فروشگاه تکنو شاپ
         </button>
       </Link>
     </div>

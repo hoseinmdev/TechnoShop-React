@@ -17,7 +17,7 @@
 13 - And ...
 
 
-### You can visit Digi-Hosein online in : [LiveDemo](https://hoseinshopcartreact.netlify.app)<br />
+### You can visit Techno-Shop online in : [LiveDemo](https://hoseinshopcartreact.netlify.app)<br />
 ### ***Enjoy it 😉***
 <br />
 <br />
