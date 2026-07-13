@@ -89,10 +89,11 @@ const Slider = () => {
   const [touchPosition, setTouchPosition] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (window.innerWidth < 1024) setSlides(mobileSlides);
       else setSlides(desktopSlides);
     }, 1500);
+    return () => clearTimeout(timer);
   }, []);
   useEffect(() => {
     const autoSlideChanger = () => {
