@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
-import { BsArrowReturnLeft } from "react-icons/bs";
 import { ImExit } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 const UserAccountButton = () => {
@@ -8,21 +7,21 @@ const UserAccountButton = () => {
   const [showModal, setShowModal] = useState(0);
   const exitOfAccount = () => {
     localStorage.removeItem("token");
+    const user = JSON.parse(localStorage.getItem("userInformation"));
+    if (user) {
+      localStorage.setItem(
+        "userInformation",
+        JSON.stringify({ ...user, islogin: false }),
+      );
+    }
     window.location.reload();
   };
   const renderModal = () => {
     setShowModal(!showModal);
   };
   const renderUserAccountOptions = () => {
-    const userEmail = JSON.parse(localStorage.getItem("token")).email.split("@")[0] || ""
     return (
       <div className=" absolute left-0 top-[41px] z-[3000] flex w-72 scale-0 flex-col items-start justify-center gap-3 rounded-2xl bg-white p-2 text-base shadow-lg group-hover/submitBtn:scale-100 dark:bg-gray-700">
-        <div className="flex w-full items-center justify-between rounded-md p-2 text-gray-700 dark:text-white lg:cursor-pointer lg:hover:bg-violet-200 dark:lg:hover:bg-violet-500">
-          <span className="flex items-center justify-center gap-2">
-            حساب کاربری | {userEmail}
-          </span>
-          <BsArrowReturnLeft />
-        </div>
         <div
           className="flex w-full items-center justify-between rounded-md p-2 text-gray-700 dark:text-white lg:cursor-pointer lg:hover:bg-violet-200 dark:lg:hover:bg-violet-500"
           onClick={() => navigate("/cart")}

@@ -1,34 +1,20 @@
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
 import signUpImage from "../assets/images/signUpImage.webp";
 import SignUpForm from "components/SignUpPage/SignUpForm";
-import EnterCode from "components/SignUpPage/EnterCode";
-import Timer from "components/common/Timer";
 const SginUpPage = () => {
-  const [sendCode, setSendCode] = useState(0);
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
   return (
-    <div className="fadeShow flex h-screen w-full">
-      <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-1/2 lg:bg-gray-100">
-        <p className="text-xl text-gray-700 dark:text-white/80 lg:hidden font-EstedadFont">
-          به تکنو شاپ خوش اومدی !
-        </p>
-        {!sendCode ? (
-          <SignUpForm
-            setSendCode={setSendCode}
-            setUserEmail={setUserEmail}
-            setUserPassword={setUserPassword}
-          />
-        ) : (
-          <EnterCode userEmail={userEmail} password={userPassword} />
-        )}
-      </div>
+    <div className="fadeShow relative flex h-screen w-full">
       <img
         src={signUpImage}
-        className="hidden h-full w-full rounded-r-3xl lg:block"
+        className="absolute inset-0 hidden h-full w-full object-cover lg:block"
         alt=""
       />
+      <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-auto lg:justify-center lg:bg-transparent lg:px-20 lg:pt-0 lg:dark:bg-transparent">
+        <p className="font-EstedadFont text-xl text-gray-700 dark:text-white/80 lg:hidden">
+          به تکنو شاپ خوش اومدی !
+        </p>
+        <SignUpForm />
+      </div>
     </div>
   );
 };

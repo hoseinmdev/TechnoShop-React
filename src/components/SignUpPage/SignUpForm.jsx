@@ -3,11 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import FormInput from "../common/FormInput";
-import { useState } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import axiosBase from "axiosConfig";
-const SignUpForm = ({ setUserEmail, setSendCode, setUserPassword }) => {
-  const [isLoading, setIsLoading] = useState(0);
+const SignUpForm = () => {
   const navigate = useNavigate();
   const initialValues = {
     email: "",
@@ -25,31 +21,21 @@ const SignUpForm = ({ setUserEmail, setSendCode, setUserPassword }) => {
       .required("تایید رمز عبور اجباری است"),
   });
   const onSubmit = (values, helpers) => {
-    setIsLoading(1);
-    axiosBase
-      .post("Account/Send_otp/", {
+    localStorage.setItem(
+      "userInformation",
+      JSON.stringify({
+        islogin: true,
         email: values.email,
-        Password: values.password,
-      })
-      .then((response) => {
-        if (response.data.status === false) {
-          toast.warn(`${response.data.Error}`);
-          navigate("/login");
-        } else {
-          setSendCode(1);
-          setIsLoading(0);
-          toast.success(`${response.data.Error}`);
-          setUserEmail(values.email);
-          setUserPassword(values.password);
-          helpers.resetForm();
-        }
-      })
-      .catch((error) => {
-        toast.warn(`${error.response.data.Error}`);
-        setIsLoading(0);
-        helpers.resetForm();
-        navigate("/login");
-      });
+        password: values.password,
+      }),
+    );
+    localStorage.setItem(
+      "token",
+      JSON.stringify({ token: `local-${Date.now()}`, email: values.email }),
+    );
+    toast.success("ثبت نام موفقیت آمیز بود", { theme: "colored" });
+    helpers.resetForm();
+    navigate("/", { replace: true });
   };
   const formik = useFormik({
     initialValues,
@@ -61,9 +47,9 @@ const SignUpForm = ({ setUserEmail, setSendCode, setUserPassword }) => {
     <>
       <form
         onSubmit={formik.handleSubmit}
-        className="mt-10 flex w-11/12 flex-col items-start justify-center gap-4 rounded-3xl bg-white p-2 dark:bg-transparent lg:absolute lg:left-[-9rem] lg:top-[10rem] lg:mt-0 lg:w-[25rem] lg:p-10 lg:dark:bg-gray-700"
+        className="mt-10 flex w-11/12 flex-col items-start justify-center gap-4 rounded-3xl bg-white p-2 dark:bg-transparent lg:mt-0 lg:w-[25rem] lg:border lg:border-white/40 lg:bg-white/30 lg:p-10 lg:shadow-2xl lg:backdrop-blur-xl lg:dark:border-white/10 lg:dark:bg-gray-900/40"
       >
-        <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-right text-xl font-bold text-gray-700 dark:text-white/80 lg:block">
+        <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-right text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
           ورود | ثبت نام
         </p>
         <FormInput
@@ -97,16 +83,12 @@ const SignUpForm = ({ setUserEmail, setSendCode, setUserPassword }) => {
           type="password"
         />
         <button
-            disabled={!formik.isValid}
+          disabled={!formik.isValid}
           style={{ opacity: !formik.isValid && 0.6 }}
-          className="mt-6 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none dark:shadow-none dark:outline dark:outline-violet-400"
+          className="mt-6 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none hover:bg-violet-800 dark:shadow-none dark:outline dark:outline-violet-400 lg:shadow-none"
           type="submit"
         >
-          {!isLoading ? (
-            "ثبت نام"
-          ) : (
-            <AiOutlineLoading3Quarters className="w-full animate-spin text-center text-xl text-white" />
-          )}
+          ثبت نام
         </button>
         <Link
           to="/login"

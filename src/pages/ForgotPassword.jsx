@@ -3,19 +3,14 @@ import * as Yup from "yup";
 import signUpImage from "../assets/images/signUpImage.webp";
 import FormInput from "../components/common/FormInput";
 import { useFormik } from "formik";
-import { useState } from "react";
-import EnterCode from "components/SignUpPage/EnterCode";
-import axiosBase from "axiosConfig";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const [isLoading, setIsLoading] = useState(0);
-  const [sendCode, setSendCode] = useState(0);
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
+    passwordConfirmation: "",
   };
   const yup = Yup.string();
   const validationSchema = Yup.object({
@@ -28,25 +23,18 @@ const ForgotPassword = () => {
       .required("تایید رمز عبور اجباری است"),
   });
   const onSubmit = (values, helpers) => {
-    setIsLoading(1);
-    axiosBase
-      .post("Account/ForgetPassword/", {
-        email: values.email,
-        Password: values.password,
-      })
-      .then((response) => {
-        setIsLoading(0);
-        console.log(response);
-        setUserEmail(values.email);
-        setUserPassword(values.password);
-        toast.success(`${response.data.Error}`);
-        setSendCode(1);
-      })
-      .catch((error) => {
-        setIsLoading(0);
-        toast.error(`${error.response.data.Error}`, { theme: "colored" });
-      });
+    const user = JSON.parse(localStorage.getItem("userInformation"));
+    if (!user || user.email !== values.email) {
+      toast.error("حسابی با این ایمیل یافت نشد", { theme: "colored" });
+      return;
+    }
+    localStorage.setItem(
+      "userInformation",
+      JSON.stringify({ ...user, password: values.password }),
+    );
+    toast.success("رمز عبور با موفقیت تغییر کرد", { theme: "colored" });
     helpers.resetForm();
+    navigate("/login", { replace: true });
   };
   const formik = useFormik({
     initialValues,
@@ -58,9 +46,12 @@ const ForgotPassword = () => {
   const renderForgotPasswordForm = () => {
     return (
       <form
-        className="flex w-11/12 flex-col items-start justify-center gap-4 rounded-lg p-4 lg:w-96"
+        className="flex w-11/12 flex-col items-start justify-center gap-4 rounded-lg p-4 lg:w-[25rem] lg:rounded-3xl lg:border lg:border-white/40 lg:bg-white/30 lg:p-10 lg:shadow-2xl lg:backdrop-blur-xl lg:dark:border-white/10 lg:dark:bg-gray-900/40"
         onSubmit={formik.handleSubmit}
       >
+        <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-right text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
+          فراموشی رمز عبور
+        </p>
         <FormInput
           label="آدرس ایمیل"
           name="email"
@@ -95,34 +86,26 @@ const ForgotPassword = () => {
           disabled={!formik.isValid}
           style={{ opacity: !formik.isValid && 0.6 }}
           type="submit"
-          className="mt-8 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none dark:shadow-none dark:outline dark:outline-violet-400"
+          className="mt-8 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none hover:bg-violet-800 dark:shadow-none dark:outline dark:outline-violet-400 lg:shadow-none"
         >
-          {!isLoading ? (
-            "تایید"
-          ) : (
-            <AiOutlineLoading3Quarters className="w-full animate-spin text-center text-xl text-white" />
-          )}
+          تایید
         </button>
       </form>
     );
   };
   return (
-    <div className="fadeShow flex h-screen w-full">
-      <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-1/2 ">
-        <p className="text-xl font-bold text-gray-700 dark:text-white/80">
-          فراموشی رمز عبور
-        </p>
-        {!sendCode ? (
-          renderForgotPasswordForm()
-        ) : (
-          <EnterCode userEmail={userEmail} password={userPassword} />
-        )}
-      </div>
+    <div className="fadeShow relative flex h-screen w-full">
       <img
         src={signUpImage}
-        className="hidden h-full w-full rounded-r-3xl lg:block"
+        className="absolute inset-0 hidden h-full w-full object-cover lg:block"
         alt=""
       />
+      <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-auto lg:justify-center lg:bg-transparent lg:px-20 lg:pt-0 lg:dark:bg-transparent">
+        <p className="text-xl font-bold text-gray-700 dark:text-white/80 lg:hidden">
+          فراموشی رمز عبور
+        </p>
+        {renderForgotPasswordForm()}
+      </div>
     </div>
   );
 };
