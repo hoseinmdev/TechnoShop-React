@@ -1,28 +1,53 @@
- 👋🏻 Hi, this is a Shop, like Technolife and DigiKala 
+# 🛍 Techno Shop
 
-***😵‍💫 With amazing feauters***
+👋🏻 Hi! This is **Techno Shop** («تکنو شاپ») — a Persian (RTL) e-commerce storefront, like Technolife and DigiKala, built with React.
 
-1️ - This is Persian 🌱<br />
-2 - Signup , login with Authentication 😍<br />
-3 - Full Responsive 💥<br />
-4 - Have DarkMode & LightMode 🌓<br />
-5 - SignUp and Login in site 😃<br />
-6 - A lot of products (Phones - Laptops - Speakers...) 📱💻<br />
-7 - You can buy products and they will be in your cart 🛒<br />
-8 - You Can Filter Products 👌🏻<br />
-9 - Landing Slider 💎<br />
-10 - Search Products 🔍<br />
-11 - Any product have a single page 🖼<br />
-12 - Any Product have qnique comments and tecknichal check !🥰<br />
-13 - And ...
+## You can visit Techno-Shop online here: [Live Demo](https://hoseinshopcartreact.netlify.app)
 
+---
 
-### You can visit Techno-Shop online in : [LiveDemo](https://hoseinshopcartreact.netlify.app)<br />
+## 😍 Features
+
+- 🌱 Fully Persian & right-to-left (RTL) UI
+- 🔐 Signup, login, logout & password reset — handled entirely on the client with `localStorage` (mock auth, no backend needed)
+- 🪟 Modern glassmorphism auth pages on desktop
+- 💥 Fully responsive (mobile & desktop)
+- 🌓 Dark mode & light mode
+- 📱💻 Lots of products (phones, laptops, tablets, smart watches, speakers, gaming...)
+- 🛒 Add products to cart — the cart is persisted in `localStorage`
+- 👌🏻 Filter & sort products by category, price and more
+- 🔍 Product search
+- 💎 Landing sliders & category shortcuts
+- 🖼 A dedicated page for every product, with comments and technical specs
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| UI | React 18 (Create React App) |
+| Routing | React Router v6 (lazy-loaded pages) |
+| State | Redux Toolkit (cart persisted to `localStorage`) |
+| Forms | Formik + Yup |
+| Styling | Tailwind CSS (class-based dark mode) |
+| HTTP | Axios |
+| Notifications | React-Toastify |
+| Sliders | Swiper |
+
+> ℹ️ **Note on auth:** the original backend for OTP/login APIs is unreliable, so authentication was migrated to a pure `localStorage` mock — credentials and login status are stored client-side only. Don't use it as a reference for real-world security.
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm start        # dev server on http://localhost:3000
+npm run build    # production build
+```
+
 ### ***Enjoy it 😉***
-<br />
+
 <br />
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=27&duration=2000&pause=1000&color=ACACAC&repeat=false&width=468&height=41&lines=%F0%9F%92%8EWatch+my+another+projects)](https://git.io/typing-svg)
 
-You can also visit **Music-City** online in : [LiveDemo](https://hosein-music-city.netlify.app/)<br />
-You can visit **Movie-City** online in : [LiveDemo](https://movie-city-nextjs.netlify.app/)<br />
+- You can also visit **Music-City** online here: [Live Demo](https://hosein-music-city.netlify.app/)
+- You can visit **Movie-City** online here: [Live Demo](https://movie-city-nextjs.netlify.app/)
