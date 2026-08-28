@@ -5,7 +5,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        EstedadFont: ["EstedadFont"],
+        sans: [
+          "Inter",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "sans-serif",
+        ],
       },
     },
   },

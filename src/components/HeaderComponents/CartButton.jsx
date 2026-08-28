@@ -1,7 +1,7 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCheckCircle, FaRibbon, FaSketch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { BiLeftArrowAlt } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 import { BsArrowLeftRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
@@ -29,18 +29,20 @@ const ShowProducts = () => {
   );
   const navigate = useNavigate();
   return (
-    <div className="absolute left-0 top-[50%] flex w-[27rem] scale-0 flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white dark:bg-gray-700 dark:border-none dark:text-white/80 p-4 shadow-lg">
+    <div className="absolute left-0 top-[50%] flex w-[27rem] scale-0 flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg dark:border-none dark:bg-gray-700 dark:text-white/80">
       <div className="flex w-full items-center justify-between gap-8 rounded-md bg-gray-100 p-2 text-sm text-black dark:bg-gray-800 dark:text-white/80">
         <div className="flex items-center justify-center gap-2">
-          <p>سبد خرید شما</p>
-          <p className="text-xs text-gray-600 dark:text-white/80">{cart.length} عدد کالا</p>
+          <p>Your cart</p>
+          <p className="text-xs text-gray-600 dark:text-white/80">
+            {cart.length} items
+          </p>
         </div>
         <Link
           className="flex items-center justify-center gap-1 text-violet-600 dark:text-violet-400"
           to="/cart"
         >
-          مشاهده سبد خرید
-          <BiLeftArrowAlt />
+          View cart
+          <BiRightArrowAlt />
         </Link>
       </div>
       <div className="flex h-full max-h-[24rem] w-full flex-col items-center justify-start gap-4 overflow-auto p-3 py-3">
@@ -52,9 +54,9 @@ const ShowProducts = () => {
         className="flex h-full w-full items-center justify-around rounded-lg bg-violet-700 px-4 py-2 text-white lg:hover:bg-violet-600"
         onClick={() => navigate("/cart")}
       >
-        ورود و ثبت سفارش
+        Checkout
         <BsArrowLeftRight />
-        <p>{productsTotalPrice.toLocaleString("en")} تومان</p>
+        <p>${productsTotalPrice.toLocaleString("en")}</p>
       </button>
     </div>
   );
@@ -73,7 +75,7 @@ const Product = ({ product }) => {
     <div className="flex h-36 w-full items-start justify-center border-b border-violet-100 pb-2">
       <div className="flex h-full w-full flex-col items-start justify-around">
         <h4
-          className="text-gray-700 lg:cursor-pointer dark:text-white/80"
+          className="text-gray-700 dark:text-white/80 lg:cursor-pointer"
           onClick={renderProductPage}
         >
           {product.title}
@@ -81,15 +83,15 @@ const Product = ({ product }) => {
         <div className="flex w-full flex-col items-start justify-center gap-2 text-sm">
           <div className="flex items-center justify-start gap-2">
             <FaSketch className=" text-sky-500" />
-            <p>ضمانت هفت روزه کالا</p>
+            <p>7-day return guarantee</p>
           </div>
           <div className="flex items-center justify-start gap-2">
             <FaRibbon className=" text-yellow-400" />
-            <p>18 ماه گارانتی</p>
+            <p>18-month warranty</p>
           </div>
           <div className="flex items-center justify-start gap-2">
             <FaCheckCircle className=" text-green-500" />
-            <p>ارسال سریع</p>
+            <p>Fast shipping</p>
           </div>
         </div>
       </div>
@@ -100,7 +102,7 @@ const Product = ({ product }) => {
           onClick={renderProductPage}
           alt=""
         />
-        <p>{product.price.toLocaleString("en")} تومان</p>
+        <p>${product.price.toLocaleString("en")}</p>
       </div>
     </div>
   );

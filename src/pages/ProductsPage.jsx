@@ -35,7 +35,6 @@ const ProductsPage = () => {
     setTimeout(() => setCategory(currentCategory), 600);
   }, [currentCategory]);
 
-  
   useEffect(() => {
     const finalProducts = [];
     // products on current category
@@ -74,11 +73,11 @@ const ProductsPage = () => {
 
   return (
     <SiteLayout>
-      <div className="flex w-full max-w-[1360px] flex-col items-start justify-center gap-4 p-4 lg:flex-row lg:justify-between ml-auto mr-auto">
+      <div className="ml-auto mr-auto flex w-full max-w-[1360px] flex-col items-start justify-center gap-4 p-4 lg:flex-row lg:justify-between">
         <MobileFilters category={category} />
         <div className="fadeShow2 sticky top-[160px] mr-4 hidden w-72 flex-col items-start justify-center gap-2 rounded-2xl bg-white p-2 shadow-lg dark:bg-gray-700 lg:flex">
           <div className="flex w-full items-center justify-between p-2">
-            <h3 className="text-gray-600 dark:text-white/70">فیلتر ها</h3>
+            <h3 className="text-gray-600 dark:text-white/70">Filters</h3>
             <DeleteFiltersBtn />
           </div>
           <Filters category={category} />

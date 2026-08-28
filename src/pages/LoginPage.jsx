@@ -20,10 +20,10 @@ const LoginPage = () => {
   };
   const yup = Yup.string();
   const validationSchema = Yup.object({
-    email: yup.email("ایمیل نامعتبر است").required("ایمیل اجباری است"),
+    email: yup.email("Invalid email").required("Email is required"),
     password: yup
-      .min(6, "کمتر از 6 کارکتر است")
-      .required("رمز عبور اجباری است"),
+      .min(6, "Must be at least 6 characters")
+      .required("Password is required"),
   });
   const onSubmit = (values, helpers) => {
     localStorage.setItem(
@@ -41,7 +41,7 @@ const LoginPage = () => {
         password: values.password,
       }),
     );
-    toast.success("خوش آمدید", { theme: "colored" });
+    toast.success("Welcome back", { theme: "colored" });
     helpers.resetForm();
     navigate("/", { replace: true });
   };
@@ -61,18 +61,18 @@ const LoginPage = () => {
       />
       <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-auto lg:justify-center lg:bg-transparent lg:px-20 lg:pt-0 lg:dark:bg-transparent">
         <p className="text-xl font-bold text-gray-700 dark:text-white/80 lg:hidden">
-          ورود به حساب
+          Sign in
         </p>
         <form
           className="flex w-11/12 flex-col items-start justify-center gap-4 rounded-lg p-4 lg:w-[25rem] lg:rounded-3xl lg:border lg:border-white/40 lg:bg-white/30 lg:p-10 lg:shadow-2xl lg:backdrop-blur-xl lg:dark:border-white/10 lg:dark:bg-gray-900/40"
           onSubmit={formik.handleSubmit}
         >
-          <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-right text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
-            ورود به حساب
+          <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-left text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
+            Sign in
           </p>
           <FormInput
-            label="آدرس ایمیل"
-            placeholder="ایمیل خود را وارد کنید ..."
+            label="Email address"
+            placeholder="Enter your email ..."
             name="email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -82,8 +82,8 @@ const LoginPage = () => {
             type="email"
           />
           <FormInput
-            label="رمز عبور"
-            placeholder="رمز عبور خود را وارد کنید ..."
+            label="Password"
+            placeholder="Enter your password ..."
             name="password"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -98,14 +98,14 @@ const LoginPage = () => {
             type="submit"
             className="mt-8 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none hover:bg-violet-800 dark:shadow-none dark:outline dark:outline-violet-400 lg:shadow-none"
           >
-            ورود
+            Sign in
           </button>
           <Link
             to="/forgotPassword"
             className="mt-2 flex justify-start text-sm text-blue-700 dark:text-blue-400"
           >
             {" "}
-            رمز عبور را فراموش کردم !
+            Forgot your password?
           </Link>
         </form>
       </div>

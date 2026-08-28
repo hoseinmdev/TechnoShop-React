@@ -5,29 +5,29 @@ const SortProducts = ({ category, products }) => {
   if (category) {
     return (
       <div className="flex w-full items-center justify-between text-base dark:text-white/70 lg:justify-start lg:gap-6">
-        <p className="hidden lg:block">ترتیب :</p>
+        <p className="hidden lg:block">Sort by:</p>
         <div className="hidden items-center justify-center gap-2 lg:flex">
-          <span className="border-r border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
-            پرفروش ترین
+          <span className="border-l border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
+            Best selling
           </span>
-          <span className="border-r border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
-            کمترین قیمت
+          <span className="border-l border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
+            Lowest price
           </span>
-          <span className="border-r border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
-            بیشترین قیمت
+          <span className="border-l border-gray-300 px-4 py-1 font-bold text-violet-700 dark:font-normal dark:text-violet-400 lg:cursor-pointer">
+            Highest price
           </span>
           <span className="rounded-lg bg-violet-100 px-4 py-1 font-bold text-violet-700 lg:cursor-pointer">
-            جدیدترین
+            Newest
           </span>
         </div>
         <div>
           {products ? (
             <span className="rounded-lg bg-violet-100 px-4 py-1 font-bold text-violet-700 lg:cursor-pointer">
-              تعداد محصولات : {products.length}
+              Products: {products.length}
             </span>
           ) : (
             <span className="flex items-center justify-center gap-2">
-              درحال جستجو :
+              Searching:
               <Skeleton width={"2rem"} height={"1rem"} radius={"30px"} />
             </span>
           )}

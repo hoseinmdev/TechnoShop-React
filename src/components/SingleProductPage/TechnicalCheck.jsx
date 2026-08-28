@@ -9,8 +9,8 @@ const TechnicalCheck = ({ product }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex w-full items-center justify-center">
-        <p className="w-2/4 font-EstedadFont text-lg text-violet-700 dark:text-violet-400 lg:w-1/4 lg:text-3xl">
-          بررسی فنی
+        <p className="w-2/4 text-lg font-semibold text-violet-700 dark:text-violet-400 lg:w-1/4 lg:text-3xl">
+          Technical review
         </p>
         <hr className="h-[1px] w-full bg-black lg:h-[2px]" />
       </div>
@@ -27,9 +27,9 @@ const Points = ({ type, points }) => {
   if (type === "positivePoints") {
     return (
       <div className="flex w-full flex-col items-start justify-start gap-2 rounded-md bg-violet-100 p-5 dark:bg-violet-800">
-        <div className="flex items-center justify-center gap-2 font-EstedadFont text-2xl text-violet-700 dark:text-violet-100">
+        <div className="flex items-center justify-center gap-2 text-2xl font-semibold text-violet-700 dark:text-violet-100">
           <AiOutlineLike />
-          مزایا :
+          Pros:
         </div>
         <div className="flex flex-col items-start justify-center gap-1 text-base text-violet-600 dark:text-violet-100 lg:text-lg">
           {points.map((p) => {
@@ -50,9 +50,9 @@ const Points = ({ type, points }) => {
   if (type === "negativePoints") {
     return (
       <div className="flex w-full flex-col items-start justify-start gap-2 rounded-md bg-red-100 p-5 dark:bg-red-900">
-        <div className="flex items-center justify-center gap-2 font-EstedadFont text-2xl text-red-700 dark:text-red-100">
+        <div className="flex items-center justify-center gap-2 text-2xl font-semibold text-red-700 dark:text-red-100">
           <AiOutlineDislike />
-          معایب :
+          Cons:
         </div>
         <div className="flex flex-col items-start justify-center gap-1 text-base text-red-600 dark:text-red-100 lg:text-lg">
           {points.map((p) => {
@@ -90,7 +90,7 @@ const Scores = ({ specifications }) => {
         <span className="border-right-[3px] flex h-24 w-24 items-center justify-center rounded-full border-2 border-t-[5px] border-green-400 text-3xl lg:hover:rotate-[360deg] lg:hover:scale-110">
           {Math.round(totalScores / allSpecifications.length)}
         </span>
-        <p className="font-EstedadFont">امتیاز کلی</p>
+        <p className="font-semibold">Overall score</p>
       </div>
       <div className="h-[1px] w-11/12 bg-gray-400 lg:h-[15rem] lg:w-[1px]" />
       <div className="flex w-full flex-wrap items-center justify-center gap-3 lg:w-[30rem] lg:items-start lg:gap-12">
@@ -103,7 +103,7 @@ const Scores = ({ specifications }) => {
               <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-r-[3px] border-t-[5px] border-violet-500 text-2xl lg:hover:rotate-[360deg] lg:hover:scale-110">
                 {p.scoreOfSpecification}
               </span>
-              <p className="font-EstedadFont">{p.nameOfSpecification}</p>
+              <p className="font-semibold">{p.nameOfSpecification}</p>
             </div>
           );
         })}

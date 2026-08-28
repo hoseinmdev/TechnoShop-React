@@ -74,17 +74,17 @@ const PurchasedProduct = ({ product }) => {
           <p className="text-sm" onClick={renderProductPage}>
             {title}
           </p>
-          <p>{price.toLocaleString("en")} تومان</p>
-          <div className="mr-4 flex w-24 items-center justify-between rounded-2xl bg-slate-100 dark:bg-gray-800 lg:mr-0">
+          <p>${price.toLocaleString("en")}</p>
+          <div className="ml-4 flex w-24 items-center justify-between rounded-2xl bg-slate-100 dark:bg-gray-800 lg:ml-0">
             <button
-              className="flex h-7 w-7 items-center justify-center rounded-2xl bg-slate-700 dark:bg-slate-900 p-2 text-white lg:cursor-pointer"
+              className="flex h-7 w-7 items-center justify-center rounded-2xl bg-slate-700 p-2 text-white dark:bg-slate-900 lg:cursor-pointer"
               onClick={incrementHandler}
             >
               +
             </button>
             <p>{quantity}</p>
             <button
-              className="flex h-7 w-7 items-center justify-center rounded-2xl bg-slate-700 dark:bg-slate-900 p-2 text-white lg:cursor-pointer"
+              className="flex h-7 w-7 items-center justify-center rounded-2xl bg-slate-700 p-2 text-white dark:bg-slate-900 lg:cursor-pointer"
               onClick={decrementHandler}
             >
               {renderIcon()}
@@ -95,15 +95,15 @@ const PurchasedProduct = ({ product }) => {
       <div className="hidden w-48 flex-col items-start justify-center gap-3 lg:flex">
         <div className="flex items-center justify-end gap-4">
           <FaSketch className="text-sky-500" />
-          <p>ضمانت هفت روزه کالا</p>
+          <p>7-day return guarantee</p>
         </div>
         <div className="flex items-center justify-end gap-4">
           <FaRibbon className="text-yellow-400" />
-          <p>18 ماه گارانتی</p>
+          <p>18-month warranty</p>
         </div>
         <div className="flex items-center justify-end gap-4">
           <FaCheckCircle className="text-green-600" />
-          <p>ارسال سریع</p>
+          <p>Fast shipping</p>
         </div>
       </div>
     </div>

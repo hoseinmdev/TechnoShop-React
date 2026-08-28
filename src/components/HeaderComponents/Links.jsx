@@ -1,4 +1,4 @@
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiGame } from "react-icons/bi";
 import { BsSmartwatch, BsSpeakerFill } from "react-icons/bs";
 import {
@@ -11,26 +11,26 @@ import { GoDeviceMobile } from "react-icons/go";
 import { NavLink } from "react-router-dom";
 
 const routes = [
-  { title: "خانه", path: "/", icon: <FaHome /> },
-  { title: "موبایل", path: "/categories/phones", icon: <GoDeviceMobile /> },
-  { title: "تبلت", path: "/categories/tablets", icon: <FaTabletAlt /> },
-  { title: "لپتاپ", path: "/categories/laptops", icon: <FaLaptopCode /> },
+  { title: "Home", path: "/", icon: <FaHome /> },
+  { title: "Phones", path: "/categories/phones", icon: <GoDeviceMobile /> },
+  { title: "Tablets", path: "/categories/tablets", icon: <FaTabletAlt /> },
+  { title: "Laptops", path: "/categories/laptops", icon: <FaLaptopCode /> },
   {
-    title: "اسپیکر و بلندگو",
+    title: "Speakers",
     path: "/categories/speakers",
     icon: <BsSpeakerFill />,
   },
   {
-    title: "ساعت هوشمند",
+    title: "Smartwatches",
     path: "/categories/digitalWatches",
     icon: <BsSmartwatch />,
   },
   {
-    title: "هدفون و هندزفری",
+    title: "Headphones",
     path: "/categories/headphones",
     icon: <FaHeadphonesAlt />,
   },
-  { title: "گیمینگ", path: "/categories/consoles", icon: <BiGame /> },
+  { title: "Gaming", path: "/categories/consoles", icon: <BiGame /> },
 ];
 
 const Links = () => {
@@ -52,9 +52,9 @@ const Links = () => {
             to={item.path}
           >
             <div className="hidden lg:flex">{item.icon}</div>
-            <div className="flex w-full justify-between font-EstedadFont">
+            <div className="flex w-full justify-between font-semibold">
               {item.title}
-              <AiOutlineArrowLeft className="lg:hidden" />
+              <AiOutlineArrowRight className="lg:hidden" />
             </div>
           </NavLink>
         );

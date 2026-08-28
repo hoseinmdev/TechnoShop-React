@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const savedProducts = JSON.parse(localStorage.getItem("userProducts"));
+const savedProducts = JSON.parse(localStorage.getItem("cartProducts"));
 const savedProductsTotalPrice = JSON.parse(
-  localStorage.getItem("userProductsTotalPrice"),
+  localStorage.getItem("cartTotalPrice"),
 );
 
 const initialState = {
@@ -56,11 +56,11 @@ export const localStorageMiddleware = ({ getState }) => {
   return (next) => (action) => {
     const result = next(action);
     localStorage.setItem(
-      "userProducts",
+      "cartProducts",
       JSON.stringify(getState().cart.products),
     );
     localStorage.setItem(
-      "userProductsTotalPrice",
+      "cartTotalPrice",
       JSON.stringify(getState().cart.productsTotalPrice),
     );
     return result;

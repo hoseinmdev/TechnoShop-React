@@ -12,8 +12,8 @@ const UserComments = ({ product }) => {
   return (
     <div className="flex flex-col items-start justify-center gap-8">
       <div className="flex w-full items-center">
-        <p className="w-full font-EstedadFont text-xl text-violet-700 dark:text-violet-400 lg:w-[25%] lg:text-3xl">
-          نظرات کاربران
+        <p className="w-full text-xl font-semibold text-violet-700 dark:text-violet-400 lg:w-[25%] lg:text-3xl">
+          Customer reviews
         </p>
         <hr className="h-[1px] w-full bg-black lg:h-[2px]" />
       </div>
@@ -42,7 +42,7 @@ const Comment = ({ comment }) => {
         <Sender information={{ star, date, userName }} />
         <Actions information={{ like, dislike }} />
       </div>
-      <div className="mr-4 flex flex-col gap-3 overflow-auto border-r-2 border-gray-300 pr-3 font-EstedadFont">
+      <div className="ml-4 flex flex-col gap-3 overflow-auto border-l-2 border-gray-300 pl-3 font-semibold">
         {text}
         <div className="flex flex-col items-center justify-center gap-3">
           <Points type={"positive"} points={positivePoints} />
@@ -62,9 +62,9 @@ const Sender = ({ information }) => {
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-4 text-sm text-gray-700 dark:text-white lg:justify-start lg:pr-6">
       {productRate()}
-      <div className="text-xl ">{star} امتیاز</div>
+      <div className="text-xl ">{star} / 5</div>
       <div>{date}</div>
-      <div className="font-EstedadFont">{userName}</div>
+      <div className="font-semibold">{userName}</div>
     </div>
   );
 };
@@ -150,10 +150,10 @@ const Points = ({ type, points }) => {
 };
 const AdminAnswer = ({ reply }) => {
   return (
-    <div className="flex flex-col items-start justify-center gap-2 rounded-md border-r-2 border-gray-300 p-3">
+    <div className="flex flex-col items-start justify-center gap-2 rounded-md border-l-2 border-gray-300 p-3">
       <div className="flex items-center justify-center gap-2">
         <FaUserCircle className="text-xl text-gray-600 dark:text-white/80" />
-        <span className="font-EstedadFont">حسین محمودی</span>
+        <span className="font-semibold">Hosein Mahmoudi</span>
       </div>
       <p>{reply}</p>
     </div>

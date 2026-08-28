@@ -1,86 +1,72 @@
-import mobileBanner from "../../assets/images/bannerMobile.webp";
-import mobileBannerinMobile from "../../assets/images/phonesBannerInMobile.jpg";
-import consoleBanner from "../../assets/images/bannerConsole.webp";
-import consoleBannerInMobile from "../../assets/images/consolesBannerInMobile.jpg";
-import airpodsBanner from "../../assets/images/bannerAirpods.webp";
-import airpodsBannerInMobile from "../../assets/images/headphonesBannerInMobile.jpg";
-import airpodsBanner2 from "../../assets/images/bannerAirpods2.webp";
-import digitalWatchBanner from "../../assets/images/bannerDigitalWatch.webp";
-import digitalWatchBannerInMobile from "../../assets/images/digitalWatchesBannerInMobile.jpg";
-import speakerBanner from "../../assets/images/bannerSpeaker.webp";
-import speakerBannerInMobile from "../../assets/images/speakersBannerInMobile.jpg";
-import tabletBanner from "../../assets/images/bannerTablet.webp";
-import laptopsBannerInMobile from "../../assets/images/laptopsBannerInMobile.jpg";
+import phoneHero from "../../assets/images/xiaomi12tPro.png";
+import consoleHero from "../../assets/images/Playstation-5.webp";
+import headphonesHero from "../../assets/images/airpod-pros-removebg-preview.png";
+import watchHero from "../../assets/images/appleSeries8.png";
+import tabletHero from "../../assets/images/GalaxyTabS8.webp";
+import speakerHero from "../../assets/images/jbpFlip6.png";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "../common/Skeleton";
-const desktopSlides = [
+
+const slidesData = [
   {
     id: 1,
-    src: consoleBanner,
-    link: "/categories/consoles",
+    link: "/categories/phones",
+    eyebrow: "What everyone's talking about",
+    title: "Best-selling phones",
+    cta: "Shop phones",
+    image: phoneHero,
+    gradient: "from-blue-600 to-blue-900",
   },
-  { id: 2, src: mobileBanner, link: "/categories/phones" },
-  {
-    id: 3,
-    src: airpodsBanner2,
-    link: "/categories/headphones",
-  },
-  {
-    id: 4,
-    src: digitalWatchBanner,
-    link: "/categories/digitalWatches",
-  },
-  {
-    id: 5,
-    src: tabletBanner,
-    link: "/categories/tablets",
-  },
-  {
-    id: 6,
-    src: speakerBanner,
-    link: "/categories/speakers",
-  },
-  {
-    id: 7,
-    src: airpodsBanner,
-    link: "/categories/headphones",
-  },
-];
-const mobileSlides = [
   {
     id: 2,
-    src: mobileBannerinMobile,
-    link: "/categories/phones",
-  },
-  {
-    id: 1,
-    src: consoleBannerInMobile,
     link: "/categories/consoles",
+    eyebrow: "New generation",
+    title: "Level up your setup",
+    cta: "Shop gaming",
+    image: consoleHero,
+    gradient: "from-violet-700 to-slate-900",
   },
   {
     id: 3,
-    src: airpodsBannerInMobile,
     link: "/categories/headphones",
+    eyebrow: "Wireless freedom",
+    title: "Sound without limits",
+    cta: "Shop headphones",
+    image: headphonesHero,
+    gradient: "from-teal-600 to-emerald-900",
   },
   {
     id: 4,
-    src: digitalWatchBannerInMobile,
     link: "/categories/digitalWatches",
+    eyebrow: "Stay connected",
+    title: "Track every moment",
+    cta: "Shop smartwatches",
+    image: watchHero,
+    gradient: "from-slate-700 to-slate-900",
   },
   {
     id: 5,
-    src: speakerBannerInMobile,
-    link: "/categories/speakers",
+    link: "/categories/tablets",
+    eyebrow: "Create anywhere",
+    title: "Work and play on the go",
+    cta: "Shop tablets",
+    image: tabletHero,
+    gradient: "from-rose-500 to-rose-900",
   },
   {
     id: 6,
-    src: laptopsBannerInMobile,
-    link: "/categories/laptops",
+    link: "/categories/speakers",
+    eyebrow: "Turn it up",
+    title: "Bring the party",
+    cta: "Shop speakers",
+    image: speakerHero,
+    gradient: "from-orange-500 to-amber-800",
   },
 ];
+
 const Slider = () => {
   const [slides, setSlides] = useState(0);
   const [index, setIndex] = useState(0);
@@ -89,10 +75,7 @@ const Slider = () => {
   const [touchPosition, setTouchPosition] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (window.innerWidth < 1024) setSlides(mobileSlides);
-      else setSlides(desktopSlides);
-    }, 1500);
+    const timer = setTimeout(() => setSlides(slidesData), 1500);
     return () => clearTimeout(timer);
   }, []);
   useEffect(() => {
@@ -135,54 +118,66 @@ const Slider = () => {
     else fadeShowSlide(slides.length - 1);
   };
   const renderSlider = () => {
-    if (slides) {
-      return (
-        <div
-          className="relative ml-auto mr-auto flex w-full max-w-[2000px]  items-center justify-between overflow-hidden bg-none shadow-2xl lg:h-[20rem]  lg:rounded-none 2xl:h-[27rem]"
-          onTouchStart={(e) => onTouchStartHandler(e)}
-          onTouchMove={(e) => onTouchMoveHandler(e)}
-        >
-          <button
-            className="absolute right-0 z-20 hidden h-full w-20 items-center justify-center rounded-l-full bg-slate-200/50 text-3xl text-white lg:flex lg:cursor-pointer lg:hover:w-24 lg:hover:bg-slate-200/70"
-            onClick={nextSlide}
-          >
-            <IoIosArrowForward />
-          </button>
-          <Link to={slides[index].link} className="h-full w-full">
-            <img
-              src={slides[index].src}
-              alt={consoleBanner}
-              className="sliderAnimation h-full w-full bg-cover object-cover"
-              // className="sliderAnimation h-full w-full"
-              style={{ opacity: fade }}
-            />
-          </Link>
-          <button
-            className="absolute left-0 z-20 hidden h-full w-20 items-center justify-center rounded-r-full bg-slate-200/50 text-3xl text-white lg:flex lg:cursor-pointer lg:hover:w-24 lg:hover:bg-slate-200/70"
-            onClick={backSlide}
-          >
-            <IoIosArrowBack />
-          </button>
-          <div className="absolute bottom-2 left-auto right-auto flex w-full transform items-center justify-center  gap-3 p-2 lg:top-[280px] lg:-scale-x-100 2xl:top-[380px]">
-            {slides.map((e, i) => {
-              return (
-                <div
-                  key={e.id}
-                  className={`h-2 w-2 rounded-full bg-white shadow-xl lg:cursor-pointer ${
-                    slides.indexOf(e) === index
-                      ? "w-6 rounded-lg opacity-100"
-                      : "opacity-50"
-                  }`}
-                  onClick={() => fadeShowSlide(i)}
-                ></div>
-              );
-            })}
-          </div>
-        </div>
-      );
-    } else {
+    if (!slides) {
       return <Skeleton width={"100%"} height={"17rem"} radius={"15px"} />;
     }
+    const slide = slides[index];
+    return (
+      <div
+        className="relative ml-auto mr-auto flex h-56 w-full max-w-[2000px] items-center justify-between overflow-hidden shadow-2xl lg:h-[20rem] 2xl:h-[27rem]"
+        onTouchStart={(e) => onTouchStartHandler(e)}
+        onTouchMove={(e) => onTouchMoveHandler(e)}
+      >
+        <button
+          className="absolute left-0 z-20 hidden h-full w-16 items-center justify-center bg-slate-900/20 text-3xl text-white lg:flex lg:cursor-pointer lg:hover:w-20 lg:hover:bg-slate-900/40"
+          onClick={backSlide}
+        >
+          <IoIosArrowBack />
+        </button>
+        <Link
+          to={slide.link}
+          className={`flex h-full w-full items-center justify-between gap-4 bg-gradient-to-r ${slide.gradient} px-8 lg:px-24`}
+          style={{ opacity: fade }}
+        >
+          <div className="flex max-w-[60%] flex-col items-start gap-2 text-white lg:gap-4">
+            <span className="text-xs uppercase tracking-widest text-white/70 lg:text-sm">
+              {slide.eyebrow}
+            </span>
+            <h2 className="text-2xl font-extrabold leading-tight lg:text-5xl">
+              {slide.title}
+            </h2>
+            <span className="mt-1 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-gray-900 lg:mt-2 lg:text-base">
+              {slide.cta}
+              <IoIosArrowForward />
+            </span>
+          </div>
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="sliderAnimation h-4/5 max-w-[38%] object-contain drop-shadow-2xl"
+          />
+        </Link>
+        <button
+          className="absolute right-0 z-20 hidden h-full w-16 items-center justify-center bg-slate-900/20 text-3xl text-white lg:flex lg:cursor-pointer lg:hover:w-20 lg:hover:bg-slate-900/40"
+          onClick={nextSlide}
+        >
+          <IoIosArrowForward />
+        </button>
+        <div className="absolute bottom-3 left-0 flex w-full items-center justify-center gap-3 p-2">
+          {slides.map((e, i) => {
+            return (
+              <div
+                key={e.id}
+                className={`h-2 w-2 rounded-full bg-white shadow-xl lg:cursor-pointer ${
+                  i === index ? "w-6 rounded-lg opacity-100" : "opacity-50"
+                }`}
+                onClick={() => fadeShowSlide(i)}
+              ></div>
+            );
+          })}
+        </div>
+      </div>
+    );
   };
   return renderSlider();
 };

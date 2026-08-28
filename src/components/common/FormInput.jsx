@@ -54,7 +54,7 @@ const Input = ({
         htmlFor={name}
         className="flex w-full flex-col items-start justify-center gap-2"
       >
-        <div className="flex w-full items-center justify-start gap-4 pr-3 dark:text-white/70">
+        <div className="flex w-full items-center justify-start gap-4 pl-3 dark:text-white/70">
           <span>{label}</span>
           <span className="flex justify-end text-sm text-red-600 dark:text-red-400">
             {error && touched && error}

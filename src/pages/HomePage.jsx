@@ -5,25 +5,24 @@ import SiteLayout from "../layout/SiteLayout";
 import Slider from "components/HomePage/Slider";
 import ProductsSlider from "components/HomePage/ProductsSlider";
 const HomePage = () => {
-
   return (
     <SiteLayout>
       <div className="flex flex-col gap-4">
         <Slider />
         <CircleCategories />
         <ProductsSlider
-          title="موبایل ها"
+          title="Phones"
           bgColor="bg-indigo-100 dark:bg-indigo-500/30"
           category="phones"
         />
         <LandingBanner />
         <ProductsSlider
-          title="لپتاپ ها"
+          title="Laptops"
           bgColor="bg-violet-100 dark:bg-gray-700/50"
           category="laptops"
         />
         <ProductsSlider
-          title="تبلت ها"
+          title="Tablets"
           bgColor="bg-rose-50 dark:bg-violet-500/30"
           category="tablets"
         />

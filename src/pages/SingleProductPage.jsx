@@ -22,15 +22,13 @@ const SingleProductPage = () => {
       return (
         <div className="flex w-full flex-col items-start justify-center gap-12 rounded-lg p-3 dark:bg-gray-700/30 dark:text-white">
           <div className="flex w-full flex-col items-start justify-center gap-6 rounded-lg">
-            <h2 className="fadeShow font-EstedadFont text-lg">
-              {product.title}
-            </h2>
+            <h2 className="fadeShow text-lg font-semibold">{product.title}</h2>
             <div className=" flex items-center justify-center gap-3">
               <Badge
                 refrens={userCommentsPart}
-                title={`${product.comments.length} نظر از سمت کاربران`}
+                title={`${product.comments.length} customer reviews`}
               />
-              <Badge refrens={technicalCheckPart} title={"بررسی فنی"} />
+              <Badge refrens={technicalCheckPart} title={"Technical review"} />
             </div>
             <div className="flex w-full flex-col items-start justify-center gap-4 lg:flex-row lg:justify-between">
               <Introduction product={product} />

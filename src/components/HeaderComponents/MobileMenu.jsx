@@ -1,5 +1,5 @@
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import {  useLocation, } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import SiteLogo from "../common/SiteLogo";
@@ -24,7 +24,7 @@ const MobileMenu = () => {
       <div
         className={`absolute top-0 z-[1500] flex h-screen w-5/6 flex-col items-center justify-start gap-2 bg-white p-4 dark:bg-gray-800`}
         style={{
-          right: `${show ? 0 : -450}px`,
+          left: `${show ? 0 : -450}px`,
           opacity: `${show ? 1 : 0}`,
         }}
       >

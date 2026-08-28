@@ -1,6 +1,6 @@
 # 🛍 Techno Shop
 
-👋🏻 Hi! This is **Techno Shop** («تکنو شاپ») — a Persian (RTL) e-commerce storefront, like Technolife and DigiKala, built with React.
+👋🏻 Hi! This is **Techno Shop** — an English (LTR) e-commerce storefront, like Technolife and DigiKala, built with React.
 
 ## You can visit Techno-Shop online here: [Live Demo](https://hoseinshopcartreact.netlify.app)
 
@@ -8,12 +8,12 @@
 
 ## 😍 Features
 
-- 🌱 Fully Persian & right-to-left (RTL) UI
+- 🌱 Fully English & left-to-right (LTR) UI
 - 🔐 Signup, login, logout & password reset — handled entirely on the client with `localStorage` (mock auth, no backend needed)
 - 🪟 Modern glassmorphism auth pages on desktop
 - 💥 Fully responsive (mobile & desktop)
 - 🌓 Dark mode & light mode
-- 📱💻 Lots of products (phones, laptops, tablets, smart watches, speakers, gaming...)
+- 📱💻 Lots of products (phones, laptops, tablets, smartwatches, speakers, gaming...) priced in USD
 - 🛒 Add products to cart — the cart is persisted in `localStorage`
 - 👌🏻 Filter & sort products by category, price and more
 - 🔍 Product search

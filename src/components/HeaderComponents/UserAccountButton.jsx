@@ -26,9 +26,7 @@ const UserAccountButton = () => {
           className="flex w-full items-center justify-between rounded-md p-2 text-gray-700 dark:text-white lg:cursor-pointer lg:hover:bg-violet-200 dark:lg:hover:bg-violet-500"
           onClick={() => navigate("/cart")}
         >
-          <span className="flex items-center justify-center gap-2">
-            سبد خرید
-          </span>
+          <span className="flex items-center justify-center gap-2">Cart</span>
           <AiOutlineShoppingCart />
         </div>
         <div
@@ -36,7 +34,7 @@ const UserAccountButton = () => {
           onClick={renderModal}
         >
           <span className="flex items-center justify-center gap-2">
-            خروج از حساب کاربری
+            Sign out
           </span>
           <ImExit />
         </div>
@@ -51,20 +49,20 @@ const UserAccountButton = () => {
           className="fixed left-0 top-0 z-[100] h-screen w-screen bg-gray-700 opacity-60"
           onClick={renderModal}
         ></div>
-        <div className="fadeShow absolute right-0 top-0 z-[101] mr-8 mt-16 flex h-36 flex-col items-center justify-between gap-4 rounded-2xl bg-white px-10 py-6 dark:bg-gray-700 lg:mr-[33rem] lg:mt-24">
-          <p>از خروج از حساب خود اطمینان دارید ؟</p>
+        <div className="fadeShow absolute left-0 top-0 z-[101] ml-8 mt-16 flex h-36 flex-col items-center justify-between gap-4 rounded-2xl bg-white px-10 py-6 dark:bg-gray-700 lg:ml-[33rem] lg:mt-24">
+          <p>Are you sure you want to sign out?</p>
           <div className="flex w-full items-center justify-between">
             <button
               className="rounded-2xl border border-gray-400 bg-white px-4 py-2 text-sm text-gray-800"
               onClick={renderModal}
             >
-              منصرف شدم
+              Cancel
             </button>
             <button
               className="rounded-2xl bg-red-500 px-4 py-2 text-sm text-white"
               onClick={exitOfAccount}
             >
-              خروج از حساب
+              Sign out
             </button>
           </div>
         </div>

@@ -52,7 +52,7 @@ const Filters = ({ category }) => {
             onClick={() => toggleShowFilterOptionHandler(option.key)}
           >
             <p
-              className={`flex w-full items-center justify-between font-EstedadFont lg:cursor-pointer ${
+              className={`flex w-full items-center justify-between font-semibold lg:cursor-pointer ${
                 showFilters[option.key]
                   ? "text-violet-700 dark:font-bold dark:text-violet-400"
                   : "text-gray-800 dark:text-white/70"
@@ -77,7 +77,7 @@ const Filters = ({ category }) => {
               );
               return (
                 <label
-                  className="flex w-full items-center justify-start gap-2 font-EstedadFont dark:text-white/70"
+                  className="flex w-full items-center justify-start gap-2 font-semibold dark:text-white/70"
                   key={item.title}
                 >
                   <input
