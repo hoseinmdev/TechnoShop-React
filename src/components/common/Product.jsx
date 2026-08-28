@@ -20,16 +20,16 @@ const Product = ({ product }) => {
 
   const clickHandler = () => {
     dispatch(addProductToCart(product));
-    toast.success("به سبد خرید اضافه شد", { theme: "colored"});
+    toast.success("Added to cart", { theme: "colored" });
   };
   const incrementHandler = () => {
     dispatch(incrementProduct(product));
   };
   const decrementHandler = () => {
     if (isInCart.quantity === 1) {
-      toast.error("از سبد خرید حذف شد", {
+      toast.error("Removed from cart", {
         icon: <RiChatDeleteFill />,
-        theme:"colored",
+        theme: "colored",
       });
       dispatch(deleteFromCart(product));
     } else dispatch(decrementProduct(product));
@@ -58,7 +58,7 @@ const Product = ({ product }) => {
             justify-between rounded-xl bg-violet-600 p-2 text-sm text-white"
           >
             <div className="flex w-full items-center justify-evenly">
-              <AiFillTag /> در سبد خرید
+              <AiFillTag /> In cart
               <p className="text-sm">{isInCart.quantity}</p>
             </div>
           </Link>
@@ -77,11 +77,11 @@ const Product = ({ product }) => {
     } else {
       return (
         <button
-          className="flex  h-9 w-11/12 items-center justify-around rounded-xl bg-slate-800 p-2 text-sm text-white dark:border-2 dark:text-white/70 dark:border-violet-700"
+          className="flex  h-9 w-11/12 items-center justify-around rounded-xl bg-slate-800 p-2 text-sm text-white dark:border-2 dark:border-violet-700 dark:text-white/70"
           onClick={clickHandler}
         >
           <AiOutlineShoppingCart />
-          <p>افزودن به سبد خرید</p>
+          <p>Add to cart</p>
         </button>
       );
     }
@@ -97,14 +97,14 @@ const Product = ({ product }) => {
         />
       </div>
       <p
-        className="w-full text-center font-EstedadFont text-[0.85rem] lg:cursor-pointer"
+        className="w-full text-center text-[0.85rem] font-semibold lg:cursor-pointer"
         onClick={renderProductPage}
       >
         {title.length > 24 ? title.slice(0, 24) + "..." : title}
       </p>
       <div className="flex w-full flex-col items-center justify-end gap-4">
         {renderAddToCartButton()}
-        <p className="text-base">{price.toLocaleString("en")} تومان</p>
+        <p className="text-base">${price.toLocaleString("en")}</p>
       </div>
     </div>
   );

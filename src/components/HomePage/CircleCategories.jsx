@@ -18,37 +18,37 @@ const CircleCategories = () => {
 
   const categories = [
     {
-      title: "گوشی موبایل",
+      title: "Phones",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_FgGs07_040c7036-93f8-4a6d-8ff5-dedb88183674.png",
       path: "/categories/phones",
     },
     {
-      title: "لپتاپ",
+      title: "Laptops",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_B574Ao_90b3facc-fc2c-4044-818d-596da0f3df78.png",
       path: "/categories/laptops",
     },
     {
-      title: "تبلت",
+      title: "Tablets",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_oBqfhC_a9f23d81-83c5-4054-9163-083454a073dc.png",
       path: "/categories/tablets",
     },
     {
-      title: "ساعت هوشمند",
+      title: "Smartwatches",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_bvLDVP_a32ff3c7-d94a-43a8-98e5-6c8890d06e50.png",
       path: "/categories/digitalWatches",
     },
     {
-      title: "هدفون و هندزفری",
+      title: "Headphones",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_ZF2YTy_bc869e82-f53c-40bb-b05c-65c5139585ee.png",
       path: "/categories/headphones",
     },
     {
-      title: "گیمینگ",
+      title: "Gaming",
       imageUrl:
         "https://www.technolife.ir/image/banner_CircleCategories_fQ1JW9_41fda70e-7de4-40b9-abb1-cd09f48a21d2.png",
       path: "/categories/consoles",
@@ -74,7 +74,7 @@ const CircleCategories = () => {
                   alt={item.imageUrl}
                   className="h-32 w-32 rounded-full border-2 border-pink-600 p-1 dark:border-2 lg:h-36 lg:w-36"
                 />
-                <p className="font-EstedadFont text-slate-600 dark:font-normal dark:text-white">
+                <p className="font-semibold text-slate-600 dark:font-normal dark:text-white">
                   {item.title}
                 </p>
               </Link>

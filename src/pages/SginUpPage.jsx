@@ -10,8 +10,8 @@ const SginUpPage = () => {
         alt=""
       />
       <div className="relative flex h-full w-full flex-col items-center justify-start gap-4 bg-white pt-10 dark:bg-gray-800 lg:w-auto lg:justify-center lg:bg-transparent lg:px-20 lg:pt-0 lg:dark:bg-transparent">
-        <p className="font-EstedadFont text-xl text-gray-700 dark:text-white/80 lg:hidden">
-          به تکنو شاپ خوش اومدی !
+        <p className="text-xl font-semibold text-gray-700 dark:text-white/80 lg:hidden">
+          Welcome to Techno Shop!
         </p>
         <SignUpForm />
       </div>

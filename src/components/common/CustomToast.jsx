@@ -8,7 +8,6 @@ const CustomToast = () => {
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
-      rtl
       pauseOnFocusLoss
       draggable
       pauseOnHover

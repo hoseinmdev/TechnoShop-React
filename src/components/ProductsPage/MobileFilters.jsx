@@ -25,12 +25,12 @@ const MobileFilters = ({ category }) => {
           document.body.classList.add("overflow-y-hidden");
         }}
       >
-        فیلتر ها
+        Filters
         <AiOutlineFilter />
       </span>
       <div
         className={`absolute top-0 z-[1500] flex h-screen w-9/12 flex-col items-center justify-start gap-4 overflow-auto bg-white p-4 dark:bg-gray-800 `}
-        style={{ right: show + "px" }}
+        style={{ left: show + "px" }}
       >
         <div className="flex w-full items-center justify-between dark:text-white">
           <AiOutlineClose

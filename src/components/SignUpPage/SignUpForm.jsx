@@ -12,13 +12,13 @@ const SignUpForm = () => {
   };
   const yup = Yup.string();
   const validationSchema = Yup.object({
-    email: yup.email("ایمیل نامعتبر است").required("ایمیل اجباری است"),
+    email: yup.email("Invalid email").required("Email is required"),
     password: yup
-      .min(6, "کمتر از 6 کارکتر است")
-      .required("رمز عبور اجباری است"),
+      .min(6, "Must be at least 6 characters")
+      .required("Password is required"),
     passwordConfirmation: Yup.string()
-      .oneOf([Yup.ref("password"), null], "پسورد همخوانی ندارد")
-      .required("تایید رمز عبور اجباری است"),
+      .oneOf([Yup.ref("password"), null], "Passwords do not match")
+      .required("Password confirmation is required"),
   });
   const onSubmit = (values, helpers) => {
     localStorage.setItem(
@@ -33,7 +33,7 @@ const SignUpForm = () => {
       "token",
       JSON.stringify({ token: `local-${Date.now()}`, email: values.email }),
     );
-    toast.success("ثبت نام موفقیت آمیز بود", { theme: "colored" });
+    toast.success("Signed up successfully", { theme: "colored" });
     helpers.resetForm();
     navigate("/", { replace: true });
   };
@@ -49,11 +49,11 @@ const SignUpForm = () => {
         onSubmit={formik.handleSubmit}
         className="mt-10 flex w-11/12 flex-col items-start justify-center gap-4 rounded-3xl bg-white p-2 dark:bg-transparent lg:mt-0 lg:w-[25rem] lg:border lg:border-white/40 lg:bg-white/30 lg:p-10 lg:shadow-2xl lg:backdrop-blur-xl lg:dark:border-white/10 lg:dark:bg-gray-900/40"
       >
-        <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-right text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
-          ورود | ثبت نام
+        <p className="mb-5 hidden w-full border-b border-b-violet-200 p-4 text-left text-xl font-bold text-gray-700 dark:text-white/80 lg:block lg:border-b-white/50 lg:text-gray-800 lg:dark:text-white">
+          Sign in | Sign up
         </p>
         <FormInput
-          label="آدرس ایمیل"
+          label="Email address"
           name="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -63,7 +63,7 @@ const SignUpForm = () => {
           type="email"
         />
         <FormInput
-          label="رمز عبور"
+          label="Password"
           name="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -73,7 +73,7 @@ const SignUpForm = () => {
           type="password"
         />
         <FormInput
-          label="تکرار رمز عبور"
+          label="Confirm password"
           name="passwordConfirmation"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -88,14 +88,14 @@ const SignUpForm = () => {
           className="mt-6 w-full rounded-xl bg-violet-700 px-4 py-3 text-lg text-white shadow-[1px_10px_14px_rgba(241,231,254,1)] outline-none hover:bg-violet-800 dark:shadow-none dark:outline dark:outline-violet-400 lg:shadow-none"
           type="submit"
         >
-          ثبت نام
+          Sign up
         </button>
         <Link
           to="/login"
           className="flex justify-start text-sm text-blue-700 dark:text-blue-400"
         >
           {" "}
-          از قبل حساب کاربری دارم
+          I already have an account
         </Link>
       </form>
     </>

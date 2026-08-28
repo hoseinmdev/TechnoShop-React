@@ -34,7 +34,7 @@ const SearchProducts = () => {
       <div
         className={
           !searchBoxSelected
-            ? "flex relative w-full items-center justify-start gap-4 rounded-lg bg-gray-200 p-3 dark:bg-slate-600"
+            ? "relative flex w-full items-center justify-start gap-4 rounded-lg bg-gray-200 p-3 dark:bg-slate-600"
             : "relative z-[1000] flex w-[25rem] items-center justify-start gap-4 rounded-md bg-white p-3 dark:bg-slate-500"
         }
         onClick={() => !searchBoxSelected && searchBoxSelectedHandler()}
@@ -42,7 +42,7 @@ const SearchProducts = () => {
         <FaSearch className="lg:cursor-pointer" />
         <input
           className="flex w-full items-center justify-start bg-transparent"
-          placeholder="محصول مورد نظرتان را جستجو کنید"
+          placeholder="Search for a product"
           value={searchBoxSelected ? searchInput : ""}
           onChange={(e) => searchInputHandler(e)}
         />
@@ -50,10 +50,10 @@ const SearchProducts = () => {
 
       {/* Found Products  */}
       {productsFound && searchBoxSelected && (
-        <div className="absolute right-3 top-[140px] z-[1000] flex max-h-64 w-[90%] flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white p-4 dark:bg-gray-800 lg:right-[200px]  2xl:right-[350px] lg:top-[100px] lg:max-h-[30rem] lg:w-[28rem]">
+        <div className="absolute right-3 top-[140px] z-[1000] flex max-h-64 w-[90%] flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white p-4 dark:bg-gray-800 lg:right-[200px]  lg:top-[100px] lg:max-h-[30rem] lg:w-[28rem] 2xl:right-[350px]">
           <div className="mr-8 flex w-full items-center justify-start gap-2 text-lg text-gray-700 dark:text-white/80">
             <HiSquares2X2 />
-            جستجو برای ...
+            Searching for ...
             {searchInput}
           </div>
           {productsFound.length !== allProducts.length && (
