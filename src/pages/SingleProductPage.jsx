@@ -20,7 +20,7 @@ const SingleProductPage = () => {
   const renderSingleProduct = () => {
     if (show) {
       return (
-        <div className="flex w-full flex-col items-start justify-center gap-12 rounded-lg p-3 dark:bg-gray-700/30 dark:text-white">
+        <div className="mx-auto flex w-full max-w-[1360px] flex-col items-start justify-center gap-12 rounded-lg p-3 dark:bg-gray-700/30 dark:text-white lg:px-8">
           <div className="flex w-full flex-col items-start justify-center gap-6 rounded-lg">
             <h2 className="fadeShow text-lg font-semibold">{product.title}</h2>
             <div className=" flex items-center justify-center gap-3">
